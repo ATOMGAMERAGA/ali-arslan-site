@@ -1,0 +1,11 @@
+<%- include('partials/basla') %>
+<section class="screen screen-error">
+  <div class="error-code"><%= kod %></div>
+  <h1 class="error-title"><%= baslik %></h1>
+  <p class="text-muted error-text"><%= mesaj %></p>
+  <div class="error-actions">
+    <a class="btn btn-primary" href="/">Ana sayfaya dön</a>
+    <a class="btn btn-secondary" href="/hakkimda">Hakkımda</a>
+  </div>
+</section>
+<%- include('partials/bitir') %>

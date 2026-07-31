@@ -1,0 +1,52 @@
+# /etc/fail2ban/jail.local
+# Kaba kuvvet saldirilarina karsi otomatik IP engelleme.
+# Engelleme UFW uzerinden yapilir (sunucudaki guvenlik duvariyla uyumlu).
+
+[DEFAULT]
+banaction = ufw
+banaction_allports = ufw
+bantime  = 1h
+findtime = 10m
+maxretry = 5
+backend  = auto
+# Kendi IP'nizi buraya ekleyerek kendinizi kilitlemekten korunabilirsiniz:
+# ignoreip = 127.0.0.1/8 ::1 85.100.xxx.xxx
+ignoreip = 127.0.0.1/8 ::1
+
+# ── SSH (sunucuya giris) ─────────────────────────────────────────────────
+[sshd]
+enabled  = true
+mode     = aggressive
+maxretry = 4
+findtime = 10m
+bantime  = 2h
+
+# ── Blogun yonetici girisi ───────────────────────────────────────────────
+[okuryazar-auth]
+enabled  = true
+filter   = okuryazar-auth
+port     = http,https
+logpath  = /var/log/okuryazar/auth.log
+maxretry = 5
+findtime = 10m
+bantime  = 2h
+
+# ── nginx hiz siniri asimlari ────────────────────────────────────────────
+[nginx-limit-req]
+enabled  = true
+port     = http,https
+logpath  = /var/log/nginx/okuryazar.error.log
+           /var/log/nginx/error.log
+maxretry = 10
+findtime = 5m
+bantime  = 1h
+
+# ── Yaygin acik tarama denemeleri (wp-login, .env, phpmyadmin…) ──────────
+[okuryazar-tarama]
+enabled  = true
+filter   = okuryazar-tarama
+port     = http,https
+logpath  = /var/log/nginx/okuryazar.access.log
+maxretry = 6
+findtime = 10m
+bantime  = 12h

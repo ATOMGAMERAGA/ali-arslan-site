@@ -1,0 +1,9 @@
+[Unit]
+Description=okuryazar.blog — günlük yedek
+After=okuryazar.service
+
+[Service]
+Type=oneshot
+ExecStart=/opt/okuryazar/deploy/yedekle.sh
+Nice=10
+IOSchedulingClass=idle

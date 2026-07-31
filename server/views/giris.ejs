@@ -1,0 +1,25 @@
+<%- include('partials/basla') %>
+<section class="screen screen-login">
+  <form method="post" action="/giris" class="login-card" autocomplete="on">
+    <input type="hidden" name="_csrf" value="<%= csrf %>">
+    <input type="hidden" name="devam" value="<%= devam %>">
+    <div class="login-kicker">Yönetici</div>
+    <h2 class="login-title">Giriş</h2>
+    <p class="text-muted login-sub">Bu kapı yalnızca ev sahibine açılır.</p>
+
+    <label class="login-label" for="kullanici">Kullanıcı Adı</label>
+    <input class="input login-input" id="kullanici" name="kullanici" type="text"
+           value="<%= kullanici %>" autocomplete="username" required maxlength="64" autocapitalize="none" spellcheck="false">
+
+    <label class="login-label" for="sifre">Şifre</label>
+    <input class="input login-input" id="sifre" name="sifre" type="password"
+           autocomplete="current-password" required maxlength="200">
+
+    <% if (hata) { %>
+    <p class="login-error"><%= hata %></p>
+    <% } %>
+
+    <button type="submit" class="btn btn-primary btn-block">Giriş Yap</button>
+  </form>
+</section>
+<%- include('partials/bitir') %>

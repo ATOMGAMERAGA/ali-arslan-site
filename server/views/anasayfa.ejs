@@ -1,0 +1,34 @@
+<%- include('partials/basla') %>
+<section class="screen screen-home">
+  <div class="hero-grid">
+    <div>
+      <div class="kicker hero-kicker">Edebiyat · Şiir · Deneme</div>
+      <h1 class="hero-title">Kelimelerin kıyısında.</h1>
+      <p class="hero-lede">Denemeler, şiirler ve roman okumalarından notlar. Aceleyle geçip gittiğimiz şeylerin — bir akşam vakti, eski bir sokak, yarım kalmış bir konuşma — durup dinlendiği bir defter.</p>
+    </div>
+    <figure class="hero-fig">
+      <img src="/assets/hero.jpg" alt="Eski bir şehrin taş sokakları" class="plate hero-img" width="1500" height="844" fetchpriority="high">
+      <figcaption>Yol defterinden — eski bir şehir, bir yaz sabahı.</figcaption>
+    </figure>
+  </div>
+
+  <div class="section-head">
+    <h6>Son Yazılar</h6>
+    <span class="aa-rule"></span>
+  </div>
+
+  <div class="post-list">
+    <% yazilar.forEach(function (p) { %>
+    <a class="post-item" href="/yazi/<%= p.slug %>">
+      <div class="text-muted post-item-meta"><%= p.meta %></div>
+      <h3 class="post-item-title"><%= p.title %></h3>
+      <p class="text-muted post-item-excerpt"><%= p.excerpt %></p>
+      <span class="post-item-more">Okumaya devam et →</span>
+    </a>
+    <% }); %>
+    <% if (yazilar.length === 0) { %>
+    <p class="text-muted empty-note">Henüz yayımlanmış bir yazı yok.</p>
+    <% } %>
+  </div>
+</section>
+<%- include('partials/bitir') %>

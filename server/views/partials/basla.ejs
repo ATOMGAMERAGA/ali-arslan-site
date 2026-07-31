@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="tr" data-aa-mode="<%= site.mode %>"<% if (site.mode !== 'sistem') { %> data-aa-theme="<%= site.mode === 'koyu' ? 'dark' : 'light' %>"<% } %><% if (!site.sepya) { %> data-aa-plain<% } %>>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title><%= sayfa.baslik %></title>
+<meta name="description" content="<%= sayfa.aciklama %>">
+<link rel="canonical" href="<%= site.url %><%= sayfa.yol %>">
+<meta name="robots" content="<%= sayfa.indeksle === false ? 'noindex, nofollow' : 'index, follow' %>">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#f3f2f2" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1c1a18" media="(prefers-color-scheme: dark)">
+
+<meta property="og:type" content="<%= sayfa.ogTur || 'website' %>">
+<meta property="og:site_name" content="<%= site.name %>">
+<meta property="og:locale" content="tr_TR">
+<meta property="og:title" content="<%= sayfa.baslik %>">
+<meta property="og:description" content="<%= sayfa.aciklama %>">
+<meta property="og:url" content="<%= site.url %><%= sayfa.yol %>">
+<meta property="og:image" content="<%= site.url %><%= sayfa.gorsel || '/assets/hero.jpg' %>">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="alternate icon" href="/favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="alternate" type="application/rss+xml" title="<%= site.title %>" href="/rss.xml">
+<link rel="manifest" href="/site.webmanifest">
+
+<link rel="preload" href="/fonts/lora-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/cormorant-garamond-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/css/fonts.css?s=<%= surum %>">
+<link rel="stylesheet" href="/css/ds.css?s=<%= surum %>">
+<link rel="stylesheet" href="/css/site.css?s=<%= surum %>">
+<!-- Tema secimini sayfa boyanmadan once uygular; acilista beyaz parlama olmaz. -->
+<script src="/js/theme.js?s=<%= surum %>"></script>
+<% if (sayfa.ldJson) { %><script type="application/ld+json"><%- sayfa.ldJson %></script><% } %>
+</head>
+<body>
+<div class="aa-app">
+<a class="aa-skip" href="#icerik">İçeriğe atla</a>
+<% if (typeof toast !== 'undefined' && toast) { %>
+<div class="aa-toast" role="status"><%= toast %></div>
+<% } %>
+
+<header class="site-header">
+  <div class="site-header-inner">
+    <a href="/" class="brand">Ali Arslan</a>
+    <span class="aa-spacer"></span>
+    <a href="/" class="nav-link">Yazılar</a>
+    <a href="/hakkimda" class="nav-link">Hakkımda</a>
+    <% if (loggedIn) { %>
+    <a href="/panel" class="nav-link nav-link-panel">Panel</a>
+    <% } %>
+    <button type="button" class="theme-btn" id="aa-theme-btn" title="Tema değiştir" aria-label="Tema değiştir">
+      <svg class="theme-ico theme-ico-sys" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"></rect><path d="M8 21h8M12 17v4"></path></svg>
+      <svg class="theme-ico theme-ico-light" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path></svg>
+      <svg class="theme-ico theme-ico-dark" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9z"></path></svg>
+      <span class="theme-lbl theme-lbl-sys">Sistem</span>
+      <span class="theme-lbl theme-lbl-light">Açık</span>
+      <span class="theme-lbl theme-lbl-dark">Koyu</span>
+    </button>
+  </div>
+</header>
+
+<main class="aa-main" id="icerik">

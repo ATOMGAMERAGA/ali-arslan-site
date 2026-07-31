@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100" role="img" aria-label="Ali Arslan">
+  <rect width="100" height="100" rx="12" fill="#f3f2f2"/>
+  <rect x="6.5" y="6.5" width="87" height="87" rx="7" fill="none" stroke="#b68235" stroke-width="1.5" opacity="0.55"/>
+  <g fill="none" stroke="#b68235" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M31 74 L50 25 L69 74"/>
+    <path d="M39.5 57 L60.5 57"/>
+  </g>
+</svg>
