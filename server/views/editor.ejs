@@ -1,0 +1,75 @@
+<%- include('partials/basla') %>
+<section class="screen screen-editor">
+  <a href="/panel" class="back-link">← Panele Dön</a>
+
+  <form method="post" action="<%= eylem %>" id="aa-editor" data-otokayit="/panel/otokayit" data-anahtar="<%= anahtar %>">
+    <input type="hidden" name="_csrf" value="<%= csrf %>">
+
+    <div class="editor-head">
+      <h1 class="editor-title"><%= editorBaslik %></h1>
+      <span class="text-muted editor-now"><%= simdi %></span>
+    </div>
+
+    <div class="editor-saved-line">
+      <span class="editor-saved" id="aa-kaydedildi" <%= kaydedildi ? '' : 'hidden' %>>✓ Otomatik kaydedildi · <span id="aa-kaydedildi-saat"><%= kaydedildi %></span></span>
+    </div>
+
+    <input type="text" class="ed-title-input" name="baslik" id="aa-baslik"
+           value="<%= edBaslik %>" placeholder="Yazının başlığı…" maxlength="200" autocomplete="off">
+
+    <input type="hidden" name="kapak" id="aa-kapak" value="<%= edKapak %>">
+
+    <button type="button" class="cover-add" id="aa-kapak-ekle" <%= edKapak ? 'hidden' : '' %>>+ Kapak görseli ekle — bilgisayarınızdan seçin</button>
+
+    <div class="cover-box" id="aa-kapak-kutu" <%= edKapak ? '' : 'hidden' %>>
+      <img class="plate cover-img" id="aa-kapak-onizleme" src="<%= edKapak || '/assets/hero.jpg' %>" alt="Kapak görseli">
+      <div class="cover-actions">
+        <button type="button" class="btn btn-ghost btn-xs" id="aa-kapak-degistir">Kapağı değiştir</button>
+        <button type="button" class="btn btn-ghost btn-xs" id="aa-kapak-kaldir">Kaldır</button>
+      </div>
+    </div>
+
+    <div class="toolbar" id="aa-toolbar">
+      <button type="button" class="tb-btn tb-btn-bold" data-ed="kalin" title="Seçili metni kalın yap">Kalın</button>
+      <button type="button" class="tb-btn tb-btn-italic" data-ed="egik" title="Seçili metni eğik yap">Eğik</button>
+      <span class="tb-sep"></span>
+      <button type="button" class="tb-btn" data-ed="h2" title="Satırı başlık yap">Başlık</button>
+      <button type="button" class="tb-btn" data-ed="h3" title="Satırı alt başlık yap">Alt Başlık</button>
+      <button type="button" class="tb-btn" data-ed="alinti" title="Satırı alıntıya çevir">Alıntı</button>
+      <span class="tb-sep"></span>
+      <button type="button" class="tb-btn" data-ed="liste" title="Madde listesi">• Liste</button>
+      <button type="button" class="tb-btn" data-ed="numarali" title="Numaralı liste">1. Liste</button>
+      <span class="tb-sep"></span>
+      <button type="button" class="tb-btn" data-ed="baglanti" title="Bağlantı ekle">Bağlantı</button>
+      <button type="button" class="tb-btn" data-ed="gorsel" title="Bilgisayarınızdan görsel ekle">Görsel</button>
+      <button type="button" class="tb-btn" data-ed="cizgi" title="Ayraç çizgisi ekle">Çizgi</button>
+      <span class="aa-spacer"></span>
+      <span class="tab-group">
+        <button type="button" class="tab-btn tab-write is-active" id="aa-sekme-yaz">Yaz</button>
+        <button type="button" class="tab-btn tab-preview" id="aa-sekme-onizle">Önizle</button>
+      </span>
+    </div>
+
+    <div class="link-bar" id="aa-link-bar" hidden>
+      <input type="text" class="link-input" id="aa-link-metin" placeholder="Görünecek metin (ör. şu yazı)">
+      <input type="text" class="link-input" id="aa-link-adres" placeholder="Adres (ör. www.site.com)">
+      <button type="button" class="btn btn-primary btn-link-add" id="aa-link-ekle">Ekle</button>
+      <button type="button" class="btn btn-ghost btn-link-add" id="aa-link-vazgec">Vazgeç</button>
+    </div>
+
+    <textarea class="ed-textarea" name="govde" id="aa-govde"
+              placeholder="Yazmaya başlayın… Metni seçip yukarıdaki düğmelerle biçimlendirin; hiçbir kod bilmenize gerek yok."><%= edGovde %></textarea>
+    <div class="aa-md ed-preview" id="aa-onizleme" hidden></div>
+
+    <input type="file" accept="image/*" class="hidden-input" id="aa-dosya-kapak">
+    <input type="file" accept="image/*" class="hidden-input" id="aa-dosya-gorsel">
+
+    <div class="editor-actions">
+      <button type="submit" class="btn btn-primary" name="durum" value="published"><%= yayinlaEtiketi %></button>
+      <button type="submit" class="btn btn-secondary" name="durum" value="draft">Taslak Olarak Kaydet</button>
+      <span class="aa-spacer"></span>
+      <span class="text-muted editor-note">Yazdıklarınız otomatik kaydedilir; sayfayı kapatsanız da kaybolmaz.</span>
+    </div>
+  </form>
+</section>
+<%- include('partials/bitir') %>

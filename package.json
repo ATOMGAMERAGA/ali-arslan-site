@@ -1,0 +1,29 @@
+{
+  "name": "okuryazar-blog",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Ali Arslan — Edebiyat blogu (okuryazar.blog)",
+  "license": "MIT",
+  "engines": {
+    "node": ">=20.11"
+  },
+  "main": "server/index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "NODE_ENV=development node --watch server/index.js",
+    "kullanici": "node scripts/kullanici.js",
+    "tohum": "node scripts/tohum.js",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "better-sqlite3": "^11.10.0",
+    "compression": "^1.8.0",
+    "cookie-parser": "^1.4.7",
+    "ejs": "^3.1.10",
+    "express": "^4.21.2",
+    "express-rate-limit": "^7.5.0",
+    "helmet": "^8.1.0",
+    "multer": "^2.0.1",
+    "sharp": "^0.34.2"
+  }
+}

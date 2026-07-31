@@ -1,0 +1,26 @@
+<%- include('partials/basla') %>
+<section class="screen screen-post">
+  <a href="/" class="back-link">← Tüm Yazılar</a>
+  <article>
+    <% if (yazi.cover) { %>
+    <figure class="post-cover-fig">
+      <img src="<%= yazi.cover %>" alt="Kapak görseli" class="plate post-cover-img">
+    </figure>
+    <% } %>
+    <h1 class="article-title"><%= yazi.title %></h1>
+    <div class="article-meta">
+      <span class="text-muted article-meta-date"><%= meta %></span>
+      <span class="text-muted article-meta-views"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"></path><circle cx="12" cy="12" r="3"></circle></svg><%= yazi.views %> okunma</span>
+      <span class="aa-spacer"></span>
+      <button type="button" class="btn btn-ghost share-btn" id="aa-share" data-baslik="<%= yazi.title %>"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"></path></svg>Paylaş</button>
+    </div>
+    <div class="hr"></div>
+    <div class="aa-md"><%- govde %></div>
+  </article>
+  <div class="signature">
+    <span class="aa-rule"></span>
+    <span class="signature-name">Ali Arslan</span>
+    <span class="aa-rule"></span>
+  </div>
+</section>
+<%- include('partials/bitir') %>

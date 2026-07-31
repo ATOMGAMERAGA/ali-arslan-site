@@ -1,0 +1,69 @@
+<%- include('partials/basla') %>
+<section class="screen screen-panel">
+  <div class="panel-head">
+    <div class="panel-head-text">
+      <div class="kicker">Yönetici Paneli</div>
+      <h1 class="panel-title">Yazılarım</h1>
+    </div>
+    <a class="btn btn-primary" href="/panel/yeni">+ Yeni Yazı</a>
+    <form method="post" action="/cikis">
+      <input type="hidden" name="_csrf" value="<%= csrf %>">
+      <button type="submit" class="btn btn-ghost">Çıkış</button>
+    </form>
+  </div>
+
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-num"><%= istatistik.views %></div>
+      <div class="text-muted stat-label">Toplam Okuma</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num"><%= istatistik.published %></div>
+      <div class="text-muted stat-label">Yayında</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num"><%= istatistik.drafts %></div>
+      <div class="text-muted stat-label">Taslak</div>
+    </div>
+  </div>
+
+  <div>
+    <% satirlar.forEach(function (r) { %>
+    <div class="panel-row">
+      <div class="panel-row-main">
+        <div class="panel-row-titleline">
+          <span class="tag <%= r.tagCls %> panel-row-tag"><%= r.statusLabel %></span>
+          <h4 class="panel-row-title"><%= r.title %></h4>
+        </div>
+        <div class="text-muted panel-row-meta"><%= r.meta %></div>
+      </div>
+      <div class="panel-row-actions">
+        <% if (r.canView) { %>
+        <a class="btn btn-ghost btn-row" href="/yazi/<%= r.slug %>">Görüntüle</a>
+        <% } %>
+        <a class="btn btn-ghost btn-row" href="/panel/duzenle/<%= r.id %>">Düzenle</a>
+        <a class="btn btn-ghost btn-row btn-del aa-sil" href="/panel/sil/<%= r.id %>" data-baslik="<%= r.title %>" data-id="<%= r.id %>">Sil</a>
+      </div>
+    </div>
+    <% }); %>
+    <% if (satirlar.length === 0) { %>
+    <p class="text-muted empty-note">Henüz yazı yok. “+ Yeni Yazı” ile ilk yazınızı oluşturun.</p>
+    <% } %>
+  </div>
+</section>
+
+<div class="aa-modal-backdrop" id="aa-sil-kutu" <%= silinecek ? '' : 'hidden' %>>
+  <div class="aa-modal" role="dialog" aria-modal="true" aria-labelledby="aa-sil-baslik">
+    <h3 id="aa-sil-baslik">Yazıyı sil</h3>
+    <p class="text-muted aa-modal-line1">“<span id="aa-sil-ad"><%= silinecek ? silinecek.title : '' %></span>” kalıcı olarak silinecek.</p>
+    <p class="text-muted aa-modal-line2">Bu işlem geri alınamaz.</p>
+    <div class="aa-modal-actions">
+      <a class="btn btn-ghost" href="/panel" id="aa-sil-vazgec">Vazgeç</a>
+      <form method="post" action="<%= silinecek ? '/panel/sil/' + silinecek.id : '/panel/sil/' %>" id="aa-sil-form">
+        <input type="hidden" name="_csrf" value="<%= csrf %>">
+        <button type="submit" class="btn btn-primary">Evet, Sil</button>
+      </form>
+    </div>
+  </div>
+</div>
+<%- include('partials/bitir') %>

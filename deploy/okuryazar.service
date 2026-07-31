@@ -1,0 +1,67 @@
+[Unit]
+Description=Ali Arslan — okuryazar.blog (Node.js)
+Documentation=https://github.com/ATOMGAMERAGA/ali-arslan-site
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=okuryazar
+Group=okuryazar
+WorkingDirectory=/opt/okuryazar
+ExecStart=/usr/bin/node server/index.js
+EnvironmentFile=/etc/okuryazar/blog.env
+Environment=NODE_ENV=production
+Environment=TZ=Europe/Istanbul
+
+# 7/24 calisma: cokerse 3 saniye sonra kendini yeniden baslatir, sunucu
+# yeniden baslatildiginda otomatik acilir (systemctl enable ile).
+Restart=always
+RestartSec=3
+StartLimitIntervalSec=0
+
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=okuryazar
+
+# ── Guvenlik sertlestirmesi ────────────────────────────────────────────────
+# Servis root degil, kendi kullanicisiyla calisir ve dosya sisteminin
+# neredeyse tamamini salt-okunur gorur. Bir acik bulunsa bile sunucunun
+# geri kalanina ulasamaz.
+NoNewPrivileges=true
+PrivateTmp=true
+PrivateDevices=true
+ProtectSystem=strict
+ProtectHome=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+ProtectClock=true
+ProtectHostname=true
+ProtectProc=invisible
+ProcSubset=pid
+RestrictNamespaces=true
+RestrictRealtime=true
+RestrictSUIDSGID=true
+LockPersonality=true
+RemoveIPC=true
+SystemCallArchitectures=native
+SystemCallFilter=@system-service
+SystemCallErrorNumber=EPERM
+CapabilityBoundingSet=
+AmbientCapabilities=
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+UMask=0027
+
+# Yalnizca bu iki dizine yazabilir; systemd bunlari acilista olusturur.
+StateDirectory=okuryazar
+StateDirectoryMode=0751
+LogsDirectory=okuryazar
+LogsDirectoryMode=0750
+ReadWritePaths=/var/lib/okuryazar /var/log/okuryazar
+
+LimitNOFILE=8192
+
+[Install]
+WantedBy=multi-user.target

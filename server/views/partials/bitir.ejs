@@ -1,0 +1,17 @@
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <span class="text-muted footer-made">Made by <span class="footer-accent">Atom</span> for Ali Arslan</span>
+    <span class="aa-spacer"></span>
+    <a href="/giris" class="footer-admin">Yönetici Girişi</a>
+  </div>
+</footer>
+</div>
+<script src="/js/site.js?s=<%= surum %>" defer></script>
+<% if (typeof sayfaScript !== 'undefined' && sayfaScript) { %>
+<script src="/js/md.js?s=<%= surum %>" defer></script>
+<script src="<%= sayfaScript %>?s=<%= surum %>" defer></script>
+<% } %>
+</body>
+</html>
