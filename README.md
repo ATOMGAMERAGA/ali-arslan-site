@@ -2,7 +2,7 @@
 
 # Ali Arslan — Edebiyat Blogu
 
-**okuryazar.blog** · Denemeler, şiirler ve roman okumalarından notlar.
+**okuryazar.blog** · Tarih okumaları, araştırmalar ve geçmişin bugüne bıraktığı izler.
 
 Claude Design'da hazırlanan *Classical* tasarımın, Ubuntu 24.04 üzerinde
 7/24 çalışacak biçimde gerçek bir siteye dönüştürülmüş hâli.

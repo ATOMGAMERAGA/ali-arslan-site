@@ -32,7 +32,7 @@ const config = {
   siteName: process.env.SITE_NAME || 'Ali Arslan',
   siteTitle: process.env.SITE_TITLE || 'Ali Arslan — Edebiyat',
   siteDesc: process.env.SITE_DESC
-    || 'Denemeler, şiirler ve roman okumalarından notlar.',
+    || 'Tarih okumaları, araştırmalar ve geçmişin bugüne bıraktığı izler.',
 
   dataDir: DATA_DIR,
   dbFile: path.join(DATA_DIR, 'blog.sqlite'),
