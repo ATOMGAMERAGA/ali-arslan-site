@@ -80,7 +80,7 @@ router.get('/hakkimda', (req, res) => {
   res.render('hakkimda', {
     sayfa: {
       baslik: 'Hakkımda — ' + config.siteName,
-      aciklama: 'Ali Arslan kimdir: edebiyat üzerine denemeler, şiirler ve roman okumaları.',
+      aciklama: 'Ali Arslan kimdir: tarih okumaları, araştırmalar ve geçmişin bugüne bıraktığı izler.',
       yol: '/hakkimda',
       gorsel: '/assets/portrait.jpg',
     },
