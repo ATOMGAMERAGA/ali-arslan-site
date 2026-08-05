@@ -148,7 +148,7 @@ PORT=$PORT
 SITE_URL=https://$ALAN
 SITE_NAME=Ali Arslan
 SITE_TITLE=Ali Arslan — Edebiyat
-SITE_DESC=Tarih ve edebiyat okumalarında notlar.
+SITE_DESC=Tarih ve edebiyat okumalarından notlar...
 
 SESSION_SECRET=$OTURUM_ANAHTARI
 SECURE_COOKIES=1
