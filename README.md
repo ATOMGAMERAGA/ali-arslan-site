@@ -102,7 +102,7 @@ public/
   css/              ds.css (Classical tasarım sistemi) · site.css · fonts.css
   js/               theme.js · site.js · editor.js · md.js
   fonts/            Cormorant Garamond + Lora (woff2)
-  assets/           hero.jpg · portrait.jpg · sea.jpg
+  assets/           hero.jpg · uskup.jpg · sea.jpg
 scripts/          kullanici.js (yönetici) · tohum.js (örnek yazılar)
 deploy/           kurulum.sh · ssl-al.sh · guncelle.sh · yedekle.sh
                   sunucu-sertlestir.sh · nginx/systemd/fail2ban dosyaları

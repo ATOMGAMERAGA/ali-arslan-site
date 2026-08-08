@@ -245,7 +245,8 @@ a:hover { color: var(--color-accent); }
   gap: clamp(28px, 5vw, 64px); align-items: start;
 }
 .about-fig { margin: 0; max-width: 440px; }
-.about-img { width: 100%; height: auto; }
+/* Fotograf kirpilmadan, tam haliyle gosterilir (object-fit: cover kullanilmaz) */
+.about-img { display: block; width: 100%; height: auto; object-fit: contain; }
 .about-kicker { margin-bottom: 12px; }
 .about-title { font-weight: 400; font-size: clamp(36px, 6vw, 54px); margin: 0 0 20px; }
 .about-p { text-align: justify; line-height: 1.85; font-size: 16px; }
