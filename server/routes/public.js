@@ -82,7 +82,7 @@ router.get('/hakkimda', (req, res) => {
       baslik: 'Hakkımda — ' + config.siteName,
       aciklama: 'Ali Arslan kimdir: tarih okumaları, araştırmalar ve geçmişin bugüne bıraktığı izler.',
       yol: '/hakkimda',
-      gorsel: '/assets/portrait.jpg',
+      gorsel: '/assets/uskup.jpg',
     },
   });
 });
